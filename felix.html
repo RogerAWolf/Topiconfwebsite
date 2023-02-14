@@ -1,0 +1,22 @@
+<script>
+    function haalallesop(){
+        fetch("http://localhost:8082/eventm/ikwilzeallemaal")
+        .then(res => res.json())
+        .then(dat => toon(dat))
+    }
+    function toon(dedata){
+        console.log(dedata);
+        for(var x = 0; x< dedata.length; x++){
+            document.getElementById("allemaal").innerHTML += "<br>"+dedata[x].title;
+        }
+    }
+    function voegtoe(){
+        var denaam = document.getElementById("kiesmaar").value;
+        fetch("http://localhost:8082/eventm/metpad/"+denaam)
+    }
+</script>
+<button onclick="haalallesop()">alle events</button>
+<div id="allemaal">HIER KOMEN ALLE EVENTS</div>
+<hr>
+<input id="kiesmaar">
+<button onclick="voegtoe()">voeg toe</button>
